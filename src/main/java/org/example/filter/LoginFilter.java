@@ -1,15 +1,12 @@
 package org.example.filter;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static org.example.Resources.PAGE_LOGIN;
+import static org.example.Resources.COMMAND_SHOW_LOGIN_PAGE;
 
 public class LoginFilter implements Filter {
 
@@ -20,15 +17,21 @@ public class LoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
 
-        // Ваша релизация фильтра входа пользователя на сайт
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+        HttpSession session = httpRequest.getSession(false);
+        String command = httpRequest.getParameter("command");
+        boolean isCommandLogin = "show_login_page".equals(command) || "login".equals(command);
 
-        if (true) { // Проверка, что пользователь авторизован (необходимо реализовать!!!)
-            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-            httpServletRequest.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+
+        if (!isCommandLogin && (session == null || session.getAttribute("user") == null)) {
+            System.out.println("redirect");
+            httpResponse.sendRedirect(COMMAND_SHOW_LOGIN_PAGE);
             return;
         }
-
+        System.out.println("filtered");
         filterChain.doFilter(request, response);
+
     }
 
     @Override
