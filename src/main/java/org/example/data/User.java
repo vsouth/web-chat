@@ -7,6 +7,7 @@ public class User {
     private final String name;
     private final UserType userType;
     private boolean online = false;
+    private boolean muted = false;
 
     public User(String login, String password, String name, UserType userType) {
         this.login = login;
@@ -33,6 +34,14 @@ public class User {
 
     public boolean isOnline() {
         return online;
+    }
+
+    public boolean isMuted() {
+        return muted;
+    }
+
+    public void setMuted(boolean muted) {
+        this.muted = muted;
     }
 
     public void setOnline(boolean online) {
