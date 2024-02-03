@@ -19,10 +19,11 @@ public class MuteCommand implements Command {
     public Result execute(HttpServletRequest request, HttpServletResponse response) {
 
         String login = request.getParameter("login");
+        boolean mute = Boolean.parseBoolean(request.getParameter("mute"));
         HashMap<String, User> users = DataBase.getUsers();
         if(users.containsKey(login)) {
             User user = users.get(login);
-            user.setMuted(true);
+            user.setMuted(mute);
         }
         return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
     }
