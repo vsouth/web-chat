@@ -69,7 +69,7 @@
                                     <input type="hidden" name="mute" value="false">
                                     <button type="submit" id="mute-button-${id.index}"></button>
                                 </form>
-                                <label style="text-decoration: underline" for="mute-button-${id.index}">
+                                <label for="mute-button-${id.index}" style="cursor: pointer">
                                 <span class="material-symbols-outlined mute checked">speaker_notes_off</span>
                                 </label>
                             </c:when>
@@ -79,7 +79,7 @@
                                     <input type="hidden" name="mute" value="true">
                                     <button type="submit" id="mute-button-${id.index}"></button>
                                 </form>
-                                <label style="text-decoration: underline" for="mute-button-${id.index}">
+                                <label for="mute-button-${id.index}" style="cursor: pointer">
                                 <span class="material-symbols-outlined mute">speaker_notes_off</span>
                                 </label>
                             </c:otherwise>

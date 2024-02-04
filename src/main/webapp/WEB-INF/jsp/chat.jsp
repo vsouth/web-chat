@@ -19,7 +19,12 @@
             <div class="chat">
                 <c:forEach var="message" items="${messages}">
                     <div class="message">
-                        <c:out value="${message.senderName}: ${message.text}" />
+                        <div class="sender-name">
+                        <c:out value="${message.senderName}" />
+                        </div>
+                        <div class="message-text">
+                        <c:out value="${message.text}" />
+                        </div>
                     </div>
                 </c:forEach>
             </div>
@@ -29,11 +34,14 @@
                 <c:when test="${!user.muted}">
                     <form method="POST" action="chat?command=send_message">
                         <input id="text" type="text" name="text" style="width: 50%">
-                        <button type="submit">Отправить</button>
+                        <button type="submit" id="send-button" style="display:none"></button>
                     </form>
+                    <label for="send-button" style="cursor: pointer">
+                        <span class="material-symbols-outlined">send</span>
+                    </label>
                 </c:when>
                 <c:otherwise>
-                    <p style="color:darkred">Отправка сообщений была заблокирована для вас</p>
+                    <p style="color: darkred">Отправка сообщений была заблокирована для вас</p>
                 </c:otherwise>
             </c:choose>
             <a href="chat?command=show_chat_page">
