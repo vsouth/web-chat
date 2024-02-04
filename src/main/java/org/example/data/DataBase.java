@@ -24,9 +24,11 @@ public final class DataBase {
     public static HashMap<String, User> getUsers() {
         return users;
     }
+
     public static List<Message> getMessages() {
         return messages;
     }
+
     public static void addMessage(Message message) {
         messages.add(message);
     }

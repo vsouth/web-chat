@@ -36,15 +36,15 @@ public class User {
         return online;
     }
 
+    public void setOnline(boolean online) {
+        this.online = online;
+    }
+
     public boolean isMuted() {
         return muted;
     }
 
     public void setMuted(boolean muted) {
         this.muted = muted;
-    }
-
-    public void setOnline(boolean online) {
-        this.online = online;
     }
 }
