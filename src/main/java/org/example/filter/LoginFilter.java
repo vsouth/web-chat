@@ -31,11 +31,10 @@ public class LoginFilter implements Filter {
 
 
         if (!isCommandLogin && (session == null || session.getAttribute("user") == null)) {
-            System.out.println("redirect");
             httpResponse.sendRedirect(COMMAND_SHOW_LOGIN_PAGE);
             return;
         }
-        System.out.println("filtered");
+
         filterChain.doFilter(request, response);
 
     }
