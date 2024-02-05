@@ -22,7 +22,9 @@ public class SendMessageCommand implements Command {
         String name = user.getName();
         System.out.println(login + "   " + text);
         if (!user.isMuted() && !text.isEmpty()) {
-            DataBase.addMessage(new Message(login, name, text));
+            synchronized (DataBase.getMessages()) {
+                DataBase.addMessage(new Message(login, name, text));
+            }
         }
         return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
     }
