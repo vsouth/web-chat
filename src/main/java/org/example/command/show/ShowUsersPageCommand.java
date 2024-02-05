@@ -9,10 +9,8 @@ import org.example.result.Result;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.util.HashMap;
 
-import static org.example.Resources.PAGE_LOGIN;
 import static org.example.Resources.USERS_PAGE;
 
 public class ShowUsersPageCommand implements Command {
